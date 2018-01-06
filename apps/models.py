@@ -1,7 +1,7 @@
 #! -*- coding: utf-8 -*-
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
+from apps.appmanager import AppManager
 class Apps(models.Model):
     """
     客户端信息表
@@ -9,6 +9,7 @@ class Apps(models.Model):
     secret = models.CharField(max_length = 128, null=True )
     uuid = models.CharField(max_length = 128, unique=True )
     appname = models.CharField(max_length = 128  )
+    objects = AppManager()
     
     class Meta:
         pass

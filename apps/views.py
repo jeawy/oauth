@@ -1,22 +1,24 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.views import View
-  
+from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponse,HttpResponseRedirect
 from django.conf import settings
 from django.shortcuts import redirect 
+from django.http import Http404, QueryDict
 import pdb
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import  Group
 import os
 from appuser.models import AdaptorUser as User
-
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 import json
 import random
 import string
 from django.utils import timezone
 from django.core.urlresolvers import reverse
- 
+from apps.models import Apps
 
 from django.contrib import auth
 
@@ -38,14 +40,14 @@ class AppViews(View):
          
         if 'new' in request.GET:
             if isMble:
-                return render(request, 'm_new.html', content)
+                return render(request, 'apps/apps.html', content)
             else:
-                return render(request, 'new.html', content) 
+                return render(request, 'apps/apps.html', content) 
         else:
             if isMble:
-                return render(request, 'm_lists.html', content)
+                return render(request, 'apps/apps.html', content)
             else:
-                return render(request, 'lists.html', content)
+                return render(request, 'apps/apps.html', content)
  
     @method_decorator(login_required)
     @method_decorator(csrf_exempt)
@@ -84,12 +86,11 @@ class AppViews(View):
             appname = request.POST['appname'].strip() 
             # 创建Apps  
             newapp = Apps.objects.create_app(appname = appname) 
-            result['uuid'] = newapp.uuid
             result['status'] ='ok'
             result['msg'] = _('Created sucessfully') 
         else:
             result['status'] ='error'
-            result['msg'] ='Need title and categoryid in POST'
+            result['msg'] =_('Need appname in POST')
         return self.httpjson(result)
 
     def put(self, request):
@@ -124,6 +125,7 @@ class AppViews(View):
         删除指定Apps 
         """
         result = {}
+        pdb.set_trace()
         data = QueryDict(request.body.decode('utf-8')) 
         if 'id' in data:
             appid = data['id'] 
@@ -142,4 +144,5 @@ class AppViews(View):
         return self.httpjson(result)
  
     def httpjson(self, result):
-        return HttpResponse(json.dumps(result), content_type="application/json")
+        pdb.set_trace()
+        return HttpResponse(result, content_type="application/json")

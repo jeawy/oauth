@@ -104,7 +104,7 @@ def register(request):
                 'result':'ok',
                 'msg':'注册成功！'
             }
-            if 'redi'
+             
         else:
             content={
                 'result':'error',

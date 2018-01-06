@@ -1,0 +1,79 @@
+{% extends 'base.html' %} {% block title2%} 应用管理 {% endblock%}
+ {% block css %}
+<link href="/static/apps/css/apps.css" rel="stylesheet"> 
+{% endblock %} 
+{% block content %}
+
+
+<div id="signup-Form" class="loginform"  >
+        {% csrf_token %}
+    <input class="form-control " type="text" name="appname" placeholder="应用名称" id="appname" value="{{appname}}" /> 
+    <button type="submit" id="submit" class="btn btn-block btn-hover">提交</button> 
+    {% if status == 'error' %}
+    <div class="alert alert-danger">{{msg}}</div>
+    {% endif %}
+</div>
+<table class="table">
+<tr><th>应用</th><th>uuid</th><th>密钥</th></tr>
+{% for app in apps %}
+<tr><td>{{app.appname}}</td><td>{{app.uuid}}</td><td>{{app.secret}}</td><td><input type="button" class="fn_btn_delete btn_danger" appid="{{app.id}}" value="删除"/></td></tr>
+{% endfor %}
+</table>
+{% endblock %} 
+{% block js %} 
+<script> 
+    $(document).ready(function() {
+        // 在键盘按下并释放及提交后验证提交表单
+        $("#submit").click(function(){
+            appname = $("#appname").val();
+            
+            data = {
+                    'method': 'create',
+                    'appname': appname, 
+                    'csrfmiddlewaretoken': getCookie('csrftoken'),
+                };
+            $.post("{% url 'apps:apps' %}", data, function(ret){
+                //
+                if (ret['status'] == 'ok'){
+                    $().message(ret['msg']);
+                    window.location.reload();
+                }else{
+                    $().errormessage(ret['msg']);
+                }
+            })
+        });
+
+        //删除
+        $('.fn_btn_delete').click(function(){
+            //
+            var appid = $(this).attr('appid');
+            data = {
+                    'method': 'delete',
+                    'id': appid, 
+                    'csrfmiddlewaretoken': getCookie('csrftoken'),
+                };
+                $.ajax({
+                    type: 'post',
+                    url: "{% url 'apps:apps' %}",
+                    data: data,
+                    success: function(result) {
+                        //HoldOn.close(); 
+                        if (ret['status'] == 'ok'){
+                            $().message(ret['msg']);
+                            window.location.reload();
+                        }else{
+                            $().errormessage(ret['msg']);
+                        }
+                    },
+                    error: function() {
+                        //HoldOn.close(); 
+                        // 500
+                        alert('server is down!')
+                    }
+                });
+             
+        });
+    });
+</script>
+
+{% endblock %}

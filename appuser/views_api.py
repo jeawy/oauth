@@ -62,9 +62,9 @@ def admin_list_users(request):
            
     context = { 'user_list':user_list }
     if isMble:
-        return render(request, 'admin_user/m_userslist.html', context)
+        return render(request, 'user/m_userslist.html', context)
     else:
-        return render(request, 'admin_user/userslist.html', context)
+        return render(request, 'user/userslist.html', context)
 
 def admin(request, userid, super):
     if not request.user.is_superuser:
@@ -173,9 +173,9 @@ def portrait(request):
             'admin_granted':admin_granted,
             }
         if isMobile:
-            return render(request, 'admin_user/m_change_portrait.html', context)
+            return render(request, 'user/m_change_portrait.html', context)
         else:
-            return render(request, 'admin_user/change_portrait.html', context)
+            return render(request, 'user/change_portrait.html', context)
  
         
 @csrf_exempt
@@ -241,9 +241,9 @@ def grouplist(request):
         
     context = { 'group_list':group_list }
     if isMobile:
-        return render(request, 'admin_user/m_grouplist.html', context)
+        return render(request, 'user/m_grouplist.html', context)
     else:
-        return render(request, 'admin_user/grouplist.html', context)
+        return render(request, 'user/grouplist.html', context)
 
              
 def newgroup(request):
@@ -281,9 +281,9 @@ def newgroup(request):
                      'validate'   :  True,
                   }
     if isMobile:    
-        return render(request, 'admin_user/m_group.html', context)
+        return render(request, 'user/m_group.html', context)
     else:
-        return render(request, 'admin_user/m_group.html', context)
+        return render(request, 'user/m_group.html', context)
 
 def modify_group(request, groupid):
     isMobile = dmb.process_request(request)
@@ -328,9 +328,9 @@ def modify_group(request, groupid):
         
     
     if isMobile:    
-        return render(request, 'admin_user/m_group.html', context)
+        return render(request, 'user/m_group.html', context)
     else:
-        return render(request, 'admin_user/m_group.html', context)
+        return render(request, 'user/m_group.html', context)
 
 def has_admin_perm(user):
     '''
@@ -385,9 +385,9 @@ def modify_user(request, userid):
         
     
     if isMobile:    
-        return render(request, 'admin_user/m_change_user.html', context)
+        return render(request, 'user/m_change_user.html', context)
     else:
-        return render(request, 'admin_user/change_user.html', context)
+        return render(request, 'user/change_user.html', context)
 
 
 
@@ -445,7 +445,7 @@ def phonecode(request, phone):
             old_int_time = 0
             msg= VerifyCode.objects.send_code_phone(phone, codetype)  
             request.session['time'] = int_time
-        print int_time, old_int_time, int_time - old_int_time
+        print(int_time, old_int_time, int_time - old_int_time)
  
     return HttpResponse(json.dumps(msg), content_type="application/json")
 

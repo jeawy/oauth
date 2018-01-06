@@ -1,18 +1,16 @@
-{% extends "admin/base_site.html" %}
+{% extends "base.html" %}
 {% block title %}上传个人头像{% endblock %}
 {% block extrahead %}{{ block.super }}
-
-<script src="/static/plugins/cropper-master/dist/bootstrap.min.js"></script> 
-<script src="/static/plugins/cropper-master/dist/cropper.js"></script>
-<script src="/static/plugins/cropper-master/dist/canvas-toBlob.js"></script>
-<script src="/static/plugins/cropper-master/dist/main.js"></script>
+ 
+<script src="/static/plugins/cropperr/dist/cropper.js"></script>
+<script src="/static/plugins/cropperr/dist/canvas-toBlob.js"></script>
+<script src="/static/plugins/cropperr/dist/main.js"></script>
 <script type="text/javascript"  src="/static/admin/js/upload_portrait.js"></script> 
 {{ media }}
 {% endblock %}
-{% block extrastyle %}{{ block.super }}
-<link  href="/static/plugins/cropper-master/dist/bootstrap.min.css" rel="stylesheet">
-<link  href="/static/plugins/cropper-master/dist/cropper.css" rel="stylesheet">
-<link  href="/static/plugins/cropper-master/dist/main.css" rel="stylesheet">
+{% block extrastyle %}{{ block.super }} 
+<link  href="/static/plugins/cropperr/dist/cropper.css" rel="stylesheet">
+<link  href="/static/plugins/cropperr/dist/main.css" rel="stylesheet">
 <link rel="stylesheet" href="/static/admin/css/change_portrait.css"/>
 {% endblock %}
 {% block coltype %}colM{% endblock %}
