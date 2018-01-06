@@ -1,0 +1,172 @@
+.no_padding_left{
+    padding-left: 0;
+    }
+.no_padding_right{
+    padding-right: 0;
+    }
+header,
+footer {
+    background-image: url(/static/images/background.png);
+    background-color: #000;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+header{
+    padding: 30px 0px;
+}
+header{
+    color: #b5b5b6;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-family: '微软雅黑';
+}
+.dropdown-menu>li>a{
+    color: #b5b5b6;
+}
+
+img.logo {
+    max-width: 180px;;
+    vertical-align: middle;
+}
+div.nav-container{
+    padding-top: 20px;
+}
+.nav_li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 0 25px;
+    line-height: 50px;
+}
+
+nav a:hover,
+nav a:focus,
+nav a:active {
+    text-decoration: none;
+}
+.nav-container{
+    overflow: hidden;
+}
+
+.fa-angle-down {
+    color: #ff5001;
+    margin-left: 10px;
+}
+
+nav .row {
+    padding: 30px 0px;
+} 
+
+li.act {
+    color: #ff5001;
+}
+.dropdown-menu .divider{
+    background-color:#333;
+    margin: 0;
+}
+.navbar-nav>li>.dropdown-menu{
+    background-color: #111;
+    padding: 0;
+    margin: 0;
+}
+.dropdown-menu>li>a{
+    color: #c3c5c8;
+    font-size: 12px;
+}
+ul{
+    margin: 0px;
+    padding: 0px;
+}
+li{
+    list-style-type: none;
+}
+.navbar{
+    margin-bottom: 0px;
+    height:100%;
+}
+.navbar-inverse {
+    background:inherit;
+    border-color: transparent; 
+}
+.navbar-brand{
+    padding: 0;
+    height:auto;
+}
+
+
+.navbar-inverse .navbar-nav>.active>a{
+    background-color: transparent;
+    color: #ff5001;
+}
+.navbar-nav>li:hover{
+    background-color: #111;
+}
+.footer-links li::before{
+    font-family: FontAwesome;
+    content: "";
+    margin-right: 7px;
+    font-size: 10px;
+    top: 1px;
+    position: relative;
+    float: left;
+    width: 3%;
+    line-height: 1.5;
+}
+
+footer a:link{
+    text-decoration:underline;
+    color:inherit;
+}
+footer a:hover,
+footer a:active{
+    color: #ff5001;
+}
+footer{
+    padding-top: 20px;
+    color: #c3c5c8;
+    font-size: 12px;
+}
+.footer_title{
+    font-weight: bold;
+    color:#fff;
+}
+
+.footer-links li{
+    padding: 4px 0;
+}
+.contact i.fa{ 
+    width: 16px;
+}
+input.phone{
+    color:#444;
+}
+.submit{
+    background-color: #ff5001;
+    border: 1px solid #ff3c01;
+    color: #fff;
+}
+img.logos{
+    width: 100%;
+    height: auto;
+    margin-top:15px; 
+}
+.p_style{
+    margin: 20px 0 10px;
+}
+
+.dropdown-menu>li>a:hover{
+    color:#fff;
+    background-color: #222;
+}
+.navbar-nav>li>.dropdown-menu{
+    border-radius: 0px;
+    padding: 0;
+}
+.dropdown-menu>li>a{
+    padding:15px 20px;
+}
+.list_con{
+    padding-top: 10px;
+}

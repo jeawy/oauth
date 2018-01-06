@@ -1,0 +1,12 @@
+table.table{
+    margin:30px 0px;
+}
+tbody>tr:hover{
+    background-color: #fff4b7;
+}
+tabl.table>tbody>tr>td{
+   vertical-align: middle;
+}
+.table>thead>tr>th{
+    border-bottom: 0px;
+}

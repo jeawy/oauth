@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% load staticfiles %}
+ {% block css %}
+<link href="/static/css/home.css" rel="stylesheet"> 
+{% endblock %} 
+{% block content %}
+
+{{request.user.phone}}
+
+{% endblock %} 
+{% block js %}
+<script src="/static/js/home.js"></script>
+
+{% endblock %}
+{% block home %}class="active"{% endblock %}

@@ -1,0 +1,189 @@
+/*
+ *箭头状大标签
+ */
+ .book-step-link{
+    display: inline-block;
+    width: 86%;
+    padding: 12px 0;
+    background-color:#0278b8; 
+    color: #fefefe;
+    position: relative;
+}
+.step1::after{
+        border-style: solid;
+        border-width: 32px;
+        border-color: transparent;
+        border-left-color: #0278b8;
+        content: "";
+        display: inline-block;
+        margin: 0 auto;
+       -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        transform: translateX(100%); 
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+}
+.step1::before{ 
+    border-style: solid;
+    border-width: 32px 16px;
+    border-color: transparent;
+    border-color: #0278b8;
+    content: "";
+    display: inline-block;
+    margin: 0 auto;
+   -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%); 
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.step2::after{
+    border-style: solid;
+    border-width: 32px;
+    border-color: transparent;
+    border-left-color: #0278b8;
+    content: "";
+    display: inline-block;
+    margin: 0 auto;
+   -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%); 
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+.step2::before{
+    border-style: solid;
+    border-width: 32px;
+    border-color: #0278b8;
+    border-left-color: transparent;
+    content: "";
+    display: inline-block;
+    margin: 0 auto;
+   -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%); 
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.step3::before{
+    border-style: solid;
+    border-width: 32px;
+    border-color: #0278b8;
+    border-left-color: transparent;
+    content: "";
+    display: inline-block;
+    margin: 0 auto;
+   -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%); 
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.step3::after{
+    border-style: solid;
+    border-width: 32px 16px;
+    border-color: transparent;
+    border-color: #0278b8;
+    content: "";
+    display: inline-block;
+    margin: 0 auto;
+   -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%); 
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+/* 
+ *胶囊不填充按钮
+ */
+.blue-btn{
+    color: #0278b8;
+    border: #0278b8 1px solid;
+    width:120px;
+    border-radius: 17px;
+    padding: 5px 10px;
+    background-color: #fff;
+}
+/* 
+ *胶囊按钮隐藏箭头
+ */
+.fa-angle-double-right{
+    margin-left: 5px;
+    display: none;
+}
+/* 
+ *填充胶囊按钮
+ */
+.fill_blue_btn{
+    color: #fff;
+    border: #025f91 1px solid;
+    width: 120px;
+    border-radius: 17px;
+    padding: 5px 10px;
+    background-color: #0278b8;
+}
+/* 
+ *填充胶囊HOVER
+ */
+.fill_blue_btn:hover{
+    background-color: #0278b8;
+    opacity:0.8 ;
+}
+.step-content table{
+text-align: left;
+width:100%;
+}
+.table-wrap{
+    min-height: 150px;
+}
+/* 
+ *内容
+ */
+.step-content{
+    margin-top: 20px;
+    border: 1px solid #0278b8;
+    padding: 12px;
+    border-radius: 6px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+div.step3-content table{
+    text-align: center;
+}
+
+.step-btn-send-code{
+    position: relative;
+}
+.input_msg{
+    position: absolute;
+    left:15%;
+    color:#666;
+}
+.msg{
+    margin-top:-12px; 
+}
+/* 
+ *箭头
+ */
+.directing{
+    width:20px;
+    height: 20px;
+    border-right:1px solid #0278b8;
+    border-top:1px solid #0278b8;
+    position: absolute;
+    top: -11px;
+    left:10%;
+    transform:rotate(-45deg);
+    -ms-transform:rotate(-45deg); 	/* IE 9 */
+    -moz-transform:rotate(-45deg); 	/* Firefox */
+    -webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+    -o-transform:rotate(-45deg); 	/* Opera */
+   background-color: #fff;
+}

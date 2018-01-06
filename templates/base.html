@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <title></title>
+  <!-- Bootstrap -->
+  <link href="/static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="/static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/plugins/swiper-3.4.1/css/swiper.css">
+  <link type="text/css" rel="stylesheet" href="/static/css/m_jquery.message.css">
+  <link type="text/css" rel="stylesheet" href="/static/css/bace.css">
+  <style>
+    .appname {
+      color: #d32f2f !important;
+    }
+  </style>
+  {% block css %} {% endblock %}
+</head>
+
+<body>
+  {% block menu %}
+  <!--页眉-->
+   
+  <!--菜单结束-->
+  {% endblock %} {% block content %} {% endblock %} {% block footer %}
+   {% endblock %}
+  <script type="text/javascript" src="/static/vendors/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.message.js"></script>
+  <script type="text/javascript" src="/static/js/base.js"></script>
+  <script type="text/javascript" src="/static/js/subscribe.js"></script>
+  <script>
+    function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = jQuery.trim(cookies[i]);
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) == (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }</script>
+  </cookies.length>
+  {% block js %} {% endblock %}
+</body>
+
+</html>

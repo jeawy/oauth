@@ -1,0 +1,7 @@
+*.pptx
+*.pyc
+*.txt
+*.docx
+*.docs
+proxytest.py
+*.tmp
