@@ -10,18 +10,15 @@ from django.contrib.auth.models import  Group
 import os
 from appuser.models import AdaptorUser as User
 from appuser.models import VerifyCode
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 import json
 import random
 import string
 from django.utils import timezone
 from django.contrib.auth.models import Permission
-from django.contrib.contenttypes.models import ContentType
-from django.utils.translation import ugettext as _
+from django.contrib.contenttypes.models import ContentType 
 from .form import UploadPortrainForm, GroupForm, UserForm
-
- 
-
+from apps.models import AuthToken, Apps 
 from django.contrib import auth
 
 #from socialoauth import SocialSites,SocialAPIError  
@@ -457,5 +454,40 @@ def phoneverify(request, phone, code):
             result['status'] = 'ok'
         else: 
             result['status'] = 'error'
-            result['msg'] = u'验证码错误' #_('Promotion code error')
+            result['msg'] = u'验证码错误'  
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
+@csrf_exempt
+def authorize(request):
+    """
+    第三方通过token获取用户信息
+    需要：token, appid and secret in post
+    """
+    result = {}
+    if request.method == 'POST':
+        if 'token' in request.POST and 'appid' in request.POST and 'secret' in request.POST:
+            token = request.POST['token']
+            appid = request.POST['appid']
+            secret = request.POST['secret']
+            try:
+                authtoken = AuthToken.objects.get(app__uuid = appid, app__secret = secret)
+                user = authtoken.user
+
+                result['status'] = 'ok'
+                user_json = {
+                    'username' : user.username,
+                    'email': user.email,
+                    'phone': user.phone
+                }
+                result['result'] = user_json 
+            except AuthToken.DoesNotExist:
+                result['status'] = 'error'
+                result['msg'] = _('404 Not found')  
+        else: 
+            result['status'] = 'error'
+            result['msg'] = _('Parameter error')  
+    else:
+        result['status'] = 'error'
+        result['msg'] = _('Method error')
+
     return HttpResponse(json.dumps(result), content_type="application/json")

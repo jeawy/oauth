@@ -24,7 +24,16 @@
 <script> 
     $(document).ready(function() {
         // 在键盘按下并释放及提交后验证提交表单
+        doubleclick = false;//避免双击的代码
         $("#submit").click(function(){
+            if (doubleclick == false){
+                doubleclick =true;
+            }
+            else{
+                return;
+            }
+
+
             appname = $("#appname").val();
             
             data = {
@@ -36,41 +45,51 @@
                 //
                 if (ret['status'] == 'ok'){
                     $().message(ret['msg']);
-                    window.location.reload();
+                    reload3();
+
                 }else{
                     $().errormessage(ret['msg']);
                 }
             })
+            doubleclick = false;
         });
 
         //删除
         $('.fn_btn_delete').click(function(){
-            //
+            if (doubleclick == false){
+                doubleclick =true;
+            }
+            else{
+                return;
+            }
+
             var appid = $(this).attr('appid');
             data = {
                     'method': 'delete',
                     'id': appid, 
                     'csrfmiddlewaretoken': getCookie('csrftoken'),
                 };
-                $.ajax({
-                    type: 'post',
-                    url: "{% url 'apps:apps' %}",
-                    data: data,
-                    success: function(result) {
-                        //HoldOn.close(); 
-                        if (ret['status'] == 'ok'){
-                            $().message(ret['msg']);
-                            window.location.reload();
-                        }else{
-                            $().errormessage(ret['msg']);
-                        }
-                    },
-                    error: function() {
-                        //HoldOn.close(); 
-                        // 500
-                        alert('server is down!')
+            $.ajax({
+                type: 'post',
+                url: "{% url 'apps:apps' %}",
+                data: data,
+                success: function(ret) {
+                    //HoldOn.close(); 
+                    if (ret['status'] == 'ok'){
+                        $().message(ret['msg']);
+                        reload3(); 
+                    }else{
+                        $().errormessage(ret['msg']);
                     }
-                });
+                },
+                error: function(ret) {
+                    //HoldOn.close(); 
+                    // 500
+                    alert('server is down!')
+                }
+            });
+            
+            doubleclick = false;
              
         });
     });

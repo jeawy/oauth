@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^phonecode/(?P<phone>[0-9.-]{3,11})$', views_api.phonecode, name='phonecode'),
     url(r'^phonecode/(?P<phone>[0-9.-]{3,11})/(?P<code>[0-9]{3,5})$', views_api.phoneverify, name='phoneverify'),
 
-
+    url(r'^oauth2/authorize/$', views_api.authorize, name='authorize'), 
     url(r'^login/$', views_ui.login, name='login'),  
     url(r'^logout/$', views_ui.logout, name='logout'),  
     url(r'^register/$', views_ui.register, name='register'),  

@@ -7,7 +7,8 @@ import pdb
 
 def home(request):
     content ={}   
-    content['mediaroot'] = settings.MEDIA_URL
+    
+    content['mediaroot'] = settings.MEDIA_URL 
     return render(request, 'home.html',content) 
 
 def switch_language(request):

@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.conf import settings
 from django.shortcuts import redirect 
+from django.utils.translation import ugettext as _
 import pdb
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import  Group
@@ -17,7 +18,7 @@ from django.utils import timezone
 from django.core.urlresolvers import reverse
  
 from .form import UploadPortrainForm, GroupForm, UserForm
-
+from apps.models import AuthToken, Apps
 from django.contrib import auth
 
 #from socialoauth import SocialSites,SocialAPIError  
@@ -31,26 +32,51 @@ comm    = Common()
 @csrf_exempt
 def login(request):
     isMble  = dmb.process_request(request)
-    
+    context ={}
     if 'phone' in request.POST and 'password' in request.POST:
-            auth.logout(request)
+            if 'appid' in request.GET and 'redirect_url' in request.GET:
+                # 来自第三方的登录请求
+                appid = request.GET['appid']
+                print(appid)
+                try:
+                    app = Apps.objects.get(uuid = appid)
+                except Apps.DoesNotExist:
+                    msg = _("App not found")
+                    context = { 
+                        'status':'error',
+                        'msg':msg 
+                    }
+                    if isMble: 
+                        return render(request, 'user/m_login.html', context)
+                    else:
+                        return render(request, 'user/login.html', context)
+ 
             phone       = request.POST['phone']
             password      = request.POST['password']
             user = auth.authenticate(phone=phone, password=password)
-            if 'next' in request.GET: 
-                next_url = request.GET.get('next')
-            else:
-                next_url = request.POST.get('next')
-            context ={} 
+            
             if user:
+                auth.logout(request)
                 # User is valid.  Set request.user and persist user in the session
                 # by logging the user in.
                 request.user = user
                 auth.login(request, user)
-                pdb.set_trace()
+                 
                 # redirect to the value of next if it is entered, otherwise
                 # to settings.APP_WEB_PC_LOGIN_URL
-                next_url
+                if 'appid' in request.GET and 'redirect_url' in request.GET:
+                    # 来自第三方的登录请求
+                    redirect_url = request.GET['redirect_url']
+                    token = AuthToken.objects.create_token(app, user)
+                    print(token)
+                    return redirect(redirect_url+"?token=" + str(token))
+
+
+                if 'next' in request.GET: 
+                    next_url = request.GET.get('next')
+                else:
+                    next_url = request.POST.get('next')
+                
                 if next_url:
                     #after login, return to the previous page, but if the previous page is logout, 
                     #then return to the host page
@@ -66,7 +92,7 @@ def login(request):
                     msg = '登录失败，用户{0}未注册...'.format(phone)
                 status = 'error' 
                 context = {'next':next_url,
-                           'status':'error',
+                           'status':status,
                            'msg':msg,
                            'phone':phone}
             if isMble: 

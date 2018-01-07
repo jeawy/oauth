@@ -5,6 +5,10 @@ import pdb
  
 
 class AppManager(models.Manager):
+    """
+    apps manager
+    """
+
     def create_app(self, appname ):
         """
         Creates app and generate uuid and secret.
@@ -19,5 +23,16 @@ class AppManager(models.Manager):
         return app
  
    
-class AdaptorUserManager(AppManager):
-    pass
+class AuthTokenManager(models.Manager):
+    """
+    auth token manager
+    """
+
+    def create_token(self, app, user ):
+        """
+        Creates app and generate uuid and secret.
+        """ 
+        authtoken, created = self.get_or_create( app = app, user = user) 
+        authtoken.token = uuid.uuid4() 
+        authtoken.save(using=self._db)
+        return authtoken.token

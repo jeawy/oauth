@@ -54,3 +54,13 @@ $(document).ready(function() {
         history.back();
     });
 });
+
+/*
+* 3秒后重新加载
+*/
+
+function reload3(){
+    setInterval(function(){
+        window.location.reload();
+    }, 3000);
+}

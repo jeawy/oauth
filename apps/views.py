@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.views import View
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 from django.http import HttpResponse,HttpResponseRedirect
 from django.conf import settings
 from django.shortcuts import redirect 
@@ -13,6 +13,8 @@ import os
 from appuser.models import AdaptorUser as User
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
+
 import json
 import random
 import string
@@ -30,7 +32,9 @@ comm    = Common()
 
  
 class AppViews(View):
-    
+
+    @method_decorator(login_required)
+    @method_decorator(permission_required('apps.manage_apps' , raise_exception=True))
     def get(self, request):
         isMble  = dmb.process_request(request)
         content = {} 
@@ -124,8 +128,7 @@ class AppViews(View):
         """
         删除指定Apps 
         """
-        result = {}
-        pdb.set_trace()
+        result = {} 
         data = QueryDict(request.body.decode('utf-8')) 
         if 'id' in data:
             appid = data['id'] 
@@ -143,6 +146,5 @@ class AppViews(View):
 
         return self.httpjson(result)
  
-    def httpjson(self, result):
-        pdb.set_trace()
-        return HttpResponse(result, content_type="application/json")
+    def httpjson(self, result): 
+        return HttpResponse(json.dumps(result), content_type="application/json")
