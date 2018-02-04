@@ -64,7 +64,7 @@ class PhoneCodeManager(CodeManager):
         content = '您好， 欢迎您的手机验证码是:' + code + "【"+settings.PROJECTNAME+"】"
         print (code)
         
-        #req = requests.get(settings.SMS_API.format(phone,content)) 
+        req = requests.get(settings.SMS_API.format(phone,content)) 
         try:
             # send phone code from a SDK 
             try:

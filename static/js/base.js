@@ -9,7 +9,6 @@ function validatemobile(mobile)
        result['msg']='请输入手机号码！'; 
        result['status'] = false;
        return result;
-       
     }     
     if(mobile.length!=11) 
     { 

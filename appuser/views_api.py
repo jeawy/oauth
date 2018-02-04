@@ -432,7 +432,7 @@ def phonecode(request, phone):
         if 'time' in request.session:
             old_int_time = request.session['time']
             request.session['time'] = int_time
-            if int_time - old_int_time < 10:# 60秒，频率太高
+            if int_time - old_int_time < 60:# 60秒，频率太高
                 msg['status'] = 'error'
                 msg['msg'] = u'操作频率太快...'
             else:
