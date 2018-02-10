@@ -1,31 +1,54 @@
 {% extends 'base.html' %} {% block title2%}用户登录 {% endblock%} {% block css %}
 <link href="/static/css/user.css" rel="stylesheet"> {% endblock %} 
 {% block content %}
+<div class="login-wrap">
+    <header class="text-center orange">
+        <img src="/static/img/noavatar.png">
+        <h4>登录</h4>
+    </header>
+    <form id="signup-Form" class="loginform" action="" method="post">
+        <div class="relative">
+        <input type="text" name="email" placeholder="邮箱" id="username" value="{{email}}" />
+        <img src="/static/img/icon/account.svg" alt="">
+        </div>
+        <div class="relative">
+            <input type="password" id="password" name="password" placeholder="密码" />
 
+            <img src="/static/img/icon/password.svg" alt="">
+        </div>
+        
+        <button type="submit" class="btn btn-block orange-bg">登录</button> {% if status == 'error' %}
+        <div class="alert alert-danger">{{msg}}</div>
+        {% endif %}
+    </form>
+    <div class="links clearfix">
+        <div class="pull-left">        <input id="auto-login" type="checkbox"><label for="auto-login">自动登录</label>
+        </div>
+        <div class="pull-right">
+                
+                    <a href="{% url 'users:register' %}">
+                        <li class="pull-right">注册账号</li>
+            
+                    </a>
+                    <a href="{% url 'users:find_password' %}">
+                        <li>找回密码</li>
+                    </a>
+        </div>
+    </div>
+    <div class="otherwise">
+        其他方式登录&nbsp;
+        <a href="javascript:;"><i class="fa fa-weixin" aria-hidden="true"></i></a>&nbsp;
+        <a href="javascript:;"><i class="fa fa-qq" aria-hidden="true"></i></a>&nbsp;
+        <a href="javascript:;"><i class="fa fa-weibo" aria-hidden="true"></i></a>&nbsp;
+    </div>
+</div>
 
-<form id="signup-Form" class="loginform" action="" method="post">
-    <input class="form-control " type="text" name="phone" placeholder="手机号码" id="phone" value="{{phone}}" />
-    <input type="password" class="form-control" id="password" name="password" placeholder="密码" />
-    <ul class="link">
-        <a href="{% url 'users:find_password' %}">
-            <li class="pull-left">找回密码 </li>
-        </a>
-        <a href="{% url 'users:register' %}">
-            <li class="pull-right">注册账号 </li>
-
-        </a>
-    </ul>
-    <button type="submit" class="btn btn-block btn-hover">登录</button> {% if status == 'error' %}
-    <div class="alert alert-danger">{{msg}}</div>
-    {% endif %}
-</form>
-
-<input type="hidden" name="next" value="{{next_url}}" /> {% endblock %} {% block js %}
-
+<input type="hidden" name="next" value="{{next_url}}" /> {% endblock %}{% block jslogin %}
+{% endblock %} {% block js %}
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
 <script>
-    $('#signup-Form').children().css("margin", "30px auto 5px");
     $(document).ready(function() {
+       
         // 在键盘按下并释放及提交后验证提交表单
         $("#signup-Form").validate({
             rules: {
@@ -65,7 +88,9 @@
                 email: "请输入一个正确的邮箱",
             }
         });
+        
     });
+
 </script>
 
 {% endblock %}

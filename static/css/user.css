@@ -1,54 +1,149 @@
-.link{
-    overflow: hidden;
+body{
+    background-color: rgb(239, 239, 239);
+    position: relative;
+    min-height: 500px;
 }
-ul{
-   padding-left:0px;
+li {
+    display: inline;
 }
-/* 
-input.form-control {
-    border-radius: 0px;
-    border-left-style: none;
-    border-right-style: none;
-}
- */
 
-form {
-    margin: 0 5%;
+button.btn-block:hover{
+    color: #eee;
+}
+
+form#signup-Form {
+width: 30%;
+width: 100%;
+margin: 0 auto;
 }
 
 button.btn {
     border-radius: 4px;
     font-size: 14px;
-    background-color: #17324D;
     color: #fff;
 }
-.register{
-    list-style-type:none;
-}
-.register li{
-   display: inline-block;
-}
-button.btn:hover,button.btn:focus,button.btn:active{
-    color: #eee;
-    background-color: #022241
-}
-.form-control{
-    margin: 30px auto 5px;
-}
-.btn,
-.form-control {
-    height: 47px;
-}
 
-#app-name {
-    color: #d32f2f;
-}
+
 
 label.error {
-    color: #d9534f;
+    color: #ea5014;
     margin: 0px;
+    position: absolute;
+    top: 100%;
+    left: 0;
 }
 
 input.error {
     border-color: #d9534f;
+}
+.login-wrap{
+    width: 340px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    padding: 25px 30px 25px;
+    border-radius: 6px;
+    background-color: #fff;
+    margin-top: 100px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(114, 114, 114);
+}
+.login-wrap header img{
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+.loginform img{
+    width: 20px;
+    position: absolute;
+    left: 2px;
+    bottom:8px;
+}
+label{
+    font-weight: 300;
+    cursor: pointer;
+    /* position: absolute;
+    top: 100%;
+    left: 2px; */
+}
+.loginform input{
+    position: relative;
+    width: 100%;
+    padding: 0 10px 4px 36px;
+    border: 1px solid;
+    border-color:transparent transparent #ddd transparent;
+    outline: 0px;
+    background-color: #fff!important;
+}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: #fff!important;
+}
+input[type=checkbox], input[type=radio]{
+    vertical-align: middle;
+    margin:0 2px 2px 0;
+}
+.links{
+    padding: 15px 0 15px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+.links a{
+    color: #333;
+}
+.links a:last-child{
+    padding: 0 5px ;
+    margin-right: 5px;
+    border-right: 1px solid #ddd;
+}
+.otherwise a{
+    display: inline-block;
+    color: #fff;
+}
+.otherwise a .fa
+{
+    background-color: #b5b6b6;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 12px;
+    width: 22px;
+    height: 22px;
+}
+.relative{
+    position: relative;
+    margin-bottom: 30px;
+}
+footer{
+    position: fixed;
+    bottom: 0px;
+}
+.login-wrap h4{
+    margin-bottom: 50px;
+}
+button[type=submit]{
+    letter-spacing: 10px;
+}
+.links a{
+    color: #ea5014;
+}
+.orange-bg {
+    background-color: #ea5014;
+}
+.orange{
+    color:#ea5014;
+}
+header{
+    background: none;
+}
+a:hover,a:visited{
+    text-decoration: none;
+}
+/* 验证按钮 */
+.proving{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(191, 191, 191);
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
 }
