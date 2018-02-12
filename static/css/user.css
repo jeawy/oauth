@@ -8,7 +8,8 @@ li {
 }
 
 button.btn-block:hover{
-    color: #eee;
+    opacity: .8;
+    color: #fff;
 }
 
 form#signup-Form {
@@ -22,7 +23,9 @@ button.btn {
     font-size: 14px;
     color: #fff;
 }
-
+.login-wrap header{
+    padding: 0px;
+}
 
 
 label.error {
@@ -54,10 +57,11 @@ input.error {
     height: 80px;
 }
 .loginform img{
-    width: 20px;
+    max-height: 21px;
+    max-width: 14px;
     position: absolute;
     left: 2px;
-    bottom:8px;
+    bottom:9px;
 }
 label{
     font-weight: 300;
@@ -69,15 +73,13 @@ label{
 .loginform input{
     position: relative;
     width: 100%;
-    padding: 0 10px 4px 36px;
+    padding: 0 10px 0 36px;
     border: 1px solid;
     border-color:transparent transparent #ddd transparent;
     outline: 0px;
-    background-color: #fff!important;
+    line-height: 200%;
 }
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-    background-color: #fff!important;
-}
+
 input[type=checkbox], input[type=radio]{
     vertical-align: middle;
     margin:0 2px 2px 0;
@@ -120,7 +122,7 @@ footer{
     margin-bottom: 50px;
 }
 button[type=submit]{
-    letter-spacing: 10px;
+    text-align: center;
 }
 .links a{
     color: #ea5014;
@@ -146,4 +148,17 @@ a:hover,a:visited{
     color: #fff;
     border: none;
     padding: 6px 12px;
+    text-align: center;
+}
+.proving:focus{
+    outline: none;
+}
+input:-webkit-autofill,input:autofill {
+    background-color: transparent!important;
+}
+button:focus,button:active{
+    outline: none;
+}
+.con-none{
+    padding-left: 15px;
 }

@@ -17,7 +17,7 @@
             <img src="/static/img/icon/password.svg" alt="">
         </div>
         
-        <button type="submit" class="btn btn-block orange-bg">登录</button> {% if status == 'error' %}
+        <button type="submit" class="btn btn-block orange-bg">登<span class="con-none"></span>录</button> {% if status == 'error' %}
         <div class="alert alert-danger">{{msg}}</div>
         {% endif %}
     </form>
