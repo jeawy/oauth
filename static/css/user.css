@@ -57,18 +57,19 @@ input.error {
     height: 80px;
 }
 .loginform img{
-    max-height: 21px;
-    max-width: 14px;
+    width: 16px;
     position: absolute;
     left: 2px;
-    bottom:9px;
+    bottom:6px;
+}
+.loginform img.key{
+    width: 18px;
+}.loginform img.account{
+    width: 18px;
 }
 label{
     font-weight: 300;
     cursor: pointer;
-    /* position: absolute;
-    top: 100%;
-    left: 2px; */
 }
 .loginform input{
     position: relative;
@@ -161,4 +162,17 @@ button:focus,button:active{
 }
 .con-none{
     padding-left: 15px;
+}
+
+ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
+    color:rgb(200, 200, 200) !important;
+}
+input:-moz-placeholder, textarea:-moz-placeholder { 
+    color:rgb(200, 200, 200) !important;
+}
+input::-moz-placeholder, textarea::-moz-placeholder { 
+  color:rgb(200, 200, 200) !important;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
+     color:rgb(200, 200, 200) !important;
 }
