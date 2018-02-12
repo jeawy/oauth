@@ -46,9 +46,21 @@
         <div class="alert alert-danger" role="alert">{{msg}}</div>
         {% endif %}
      {% endif %}
+    <div class="rule"><input type="checkbox" name="" id="">我已经阅读并同意遵守<span>法律声明</span>和<span>隐私条框</span></div>
     
 </form>
 
+</div>
+
+
+<!-- 弹出框 -->
+<div class="Pop-up">
+    <img class="close" src="/static/img/icon/close.svg" alt="">
+    <div class="Pop-up-title">隐私条款</div>
+    <div class="Pop-up-details">
+        <div class="details-title">1.信息的手机和使用</div>
+        <p>（1）为了以创建账户、识别账户</p>
+    </div>
 </div>
 {% endblock %} {% block js %}
 
@@ -104,8 +116,16 @@ $("#sendcode").click(function(){
     });
      
     doubleclick = false;
-})
     
+})
+    /* 关闭弹出窗 */
+    $('.close').click(function(){
+        $(this).parents('.Pop-up').hide();
+    })
+    /* 显示弹出 */
+    $('.rule span').click(function(){
+        $s('.Pop-up').show();
+    })
 
 </script>
 {% endblock %}

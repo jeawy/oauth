@@ -81,9 +81,11 @@ label{
     line-height: 200%;
 }
 
-input[type=checkbox], input[type=radio]{
+.loginform input[type=checkbox]{
     vertical-align: middle;
-    margin:0 2px 2px 0;
+    margin:0 6px 2px 0;
+    display: inline;
+    width: unset;
 }
 .links{
     padding: 15px 0 15px;
@@ -175,4 +177,48 @@ input::-moz-placeholder, textarea::-moz-placeholder {
 }
 input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
      color:rgb(200, 200, 200) !important;
+}
+.rule{
+    margin-top:15px;
+    font-size: 12px;
+}
+.rule span{
+    color: #ea5014;
+    cursor: pointer;
+    padding:0 4px;
+}
+
+
+/* 弹出框 */
+.Pop-up{
+    display: none;
+    width: 600px;
+    position: fixed;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+.Pop-up-title{
+    font-size: 16px;
+    padding: 15px 45px;
+    background-color: rgb(242, 242, 242);
+}
+.Pop-up-details{
+    background-color: #fff;
+    padding: 15px 45px;
+    font-size: 12px;
+    line-height: 2;
+}
+.details-title{
+    color: #ea5014;
+    font-size: 14px
+}
+.close{
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
