@@ -91,7 +91,7 @@ def login(request):
                 except User.DoesNotExist:
                     msg = '登录失败，用户{0}未注册...'.format(phone)
                 status = 'error' 
-                context = {'next':next_url,
+                context = {
                            'status':status,
                            'msg':msg,
                            'phone':phone}

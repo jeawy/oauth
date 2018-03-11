@@ -26,4 +26,4 @@ urlpatterns = [
     url(r'^apps/', include('apps.urls', namespace="apps")), 
     url(r'^$', views.home, name='home'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += i18n_patterns(url(r'^admin/', include(admin.site.urls)), )
+#urlpatterns += i18n_patterns(url(r'^admin/', include(admin.site.urls)), )

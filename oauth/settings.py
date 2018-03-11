@@ -42,7 +42,7 @@ INSTALLED_APPS = (
     'appuser', 
     'apps',
 )
-CORS_ORIGIN_WHITELIST = ( '127.0.0.1',  )
+CORS_ORIGIN_WHITELIST = ( '127.0.0.1',  'http://www.asucast.com:8080', 'www.asucast.com:8080','http://47.95.239.228:8800','47.95.239.228:8800')
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -78,14 +78,24 @@ WSGI_APPLICATION = 'oauth.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'oauth',
+		'USER':'root',
+        'PASSWORD':'sqlroot',
+        'HOST':'localhost',
+        'PORT':3306, 
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

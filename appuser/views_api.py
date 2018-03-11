@@ -470,7 +470,7 @@ def authorize(request):
             appid = request.POST['appid']
             secret = request.POST['secret']
             try:
-                authtoken = AuthToken.objects.get(app__uuid = appid, app__secret = secret)
+                authtoken = AuthToken.objects.get(app__uuid = appid, app__secret = secret, token=token)
                 user = authtoken.user
 
                 result['status'] = 'ok'
