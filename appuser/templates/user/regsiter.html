@@ -3,7 +3,7 @@
  
 {% csrf_token %}
 <div class="login-wrap">
-<header class="text-center orange">
+<!-- <header class="text-center orange">
         <img src="/static/img/noavatar.png">
         <h4>注册</h4>
     </header>
@@ -48,8 +48,16 @@
      {% endif %}
     <div class="rule"><input type="checkbox" name="" id="">我已经阅读并同意遵守<span>法律声明</span>和<span>隐私条框</span></div>
     
-</form>
+</form> -->
 
+    <header class="text-center orange success-header">
+        <img src="/static/img/noavatar.png">
+        <h4>注册成功</h4>
+    </header>
+<div class="success-content">
+    <p>感谢您的注册，<!--  --></p>
+    <a href="javascript:;"><span>3秒后为您跳转到首页</span></a>
+</div>
 </div>
 
 
@@ -79,7 +87,8 @@ $("#sendcode").click(function(){
         return;
     }
  
-    var phone = $('#phone').val();
+    var phone = $('#phone').val(),
+    thisEl = $(this);
     {% if pagetype == 'findpassword'%} 
     var codetype = '1';
     {% else %}
