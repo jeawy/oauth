@@ -46,7 +46,7 @@
         <div class="alert alert-danger" role="alert">{{msg}}</div>
         {% endif %}
      {% endif %}
-    <div class="rule"><input type="checkbox" name="" id="">我已经阅读并同意遵守<span>法律声明</span>和<span>隐私条框</span></div>
+    <div class="rule"><input id="agree" type="checkbox" name="agree" id="">我已经阅读并同意遵守<span>法律声明</span>和<span>隐私条框</span></div>
     
 </form> 
 
@@ -86,7 +86,7 @@ $("#sendcode").click(function(){
     else{
         return;
     }
- 
+ var thisBtn = $(this);
     var phone = $('#phone').val(),
     thisEl = $(this);
     {% if pagetype == 'findpassword'%} 
@@ -97,7 +97,8 @@ $("#sendcode").click(function(){
 
     result = validatemobile(phone);
     if (result['status'] == false){
-        $().errormessage(result['msg']);
+        var txt2=$("<lable class='error'></lable>").text(result['msg']);
+        thisBtn.parents('.relative').append(txt2);
         $('#phone').focus(); 
     }else{
         var sec=10;
@@ -135,6 +136,11 @@ $("#sendcode").click(function(){
     $('.rule span').click(function(){
         $s('.Pop-up').show();
     })
-
+    //三秒跳转
+    /* $(document).ready(function(){
+    var toHome = setInterval(function(){
+        window.location.href="{% url 'apps:apps' %}"
+    }, 3000);  */
+})
 </script>
 {% endblock %}

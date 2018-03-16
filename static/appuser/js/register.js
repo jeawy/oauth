@@ -17,13 +17,22 @@
                     required: true, 
                 },
                 confirm_password: {
-                    required: true,
+                    required: true, 
                     minlength: 5,
                     equalTo: "#password"
+                },
+                phone:{
+                    required: true,
+                    minlength: 11,
+                    number:true,
+                    digits:true
                 },
                 email: {
                     required: true,
                     email: true
+                },
+                agree:{
+                    required: true
                 }
 
             },
@@ -44,10 +53,23 @@
                     minlength: "密码长度不能小于 5 个字母",
                     equalTo: "两次密码输入不一致"
                 },
+                phone:{
+                    required: "请输入手机号",
+                    minlength: "请输入正确的手机号",
+                    number:"请输入正确的手机号",
+                    digits:"请输入正确的手机号"
+                },
+                agree:{
+                    required:"未同意遵守法律声明和隐私条框",
+                },
                 email: "请输入一个正确的邮箱",
             }
         });
-        
+       /*  $('form').submit(function(e){
+            if(!$('#agree').checked){
+                $().errormessage('请完善资料');
+                e.preventDefault();
+            } */
         var html ='<div class="alert alert-danger" role="alert">###</div>';
         //验证用户名和邮箱是否已被注册
         $("#username").blur(function(){
