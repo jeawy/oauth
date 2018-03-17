@@ -34,7 +34,8 @@
     <img src="/static/img/icon/queren.svg" alt="">
     </div>
     
-    {% if pagetype == 'findpassword'%} 
+    <div class="relative">
+        {% if pagetype == 'findpassword'%} 
     <button type="submit" class="btn btn-block orange-bg">重置密码</button> 
     {% else %}
     <button type="submit" class="btn btn-block orange-bg">注<span class="con-none"></span>册</button> 
@@ -46,6 +47,7 @@
         <div class="alert alert-danger" role="alert">{{msg}}</div>
         {% endif %}
      {% endif %}
+    </div>
     <div class="rule"><input id="agree" type="checkbox" name="agree" id="">我已经阅读并同意遵守<span>法律声明</span>和<span>隐私条框</span></div>
     
 </form> 
@@ -79,7 +81,7 @@
 <script>
 
 doubleclick = false;//避免双击的代码
-$("#sendcode").click(function(){
+$("#sendcode").click(function(){    
     if (doubleclick == false){
         doubleclick =true;
     }
@@ -97,7 +99,8 @@ $("#sendcode").click(function(){
 
     result = validatemobile(phone);
     if (result['status'] == false){
-        var txt2=$("<lable class='error'></lable>").text(result['msg']);
+        thisBtn.parents('.relative').find('.error').remove();
+        var txt2=$("<label id='code-error' class='error'></label>").text(result['msg']);
         thisBtn.parents('.relative').append(txt2);
         $('#phone').focus(); 
     }else{
@@ -140,7 +143,7 @@ $("#sendcode").click(function(){
     /* $(document).ready(function(){
     var toHome = setInterval(function(){
         window.location.href="{% url 'apps:apps' %}"
-    }, 3000);  */
-})
+    }, 3000);  
+})*/
 </script>
 {% endblock %}
