@@ -428,7 +428,14 @@ def phonecode(request, phone):
                 msg['status'] = 'error'
                 msg['msg'] = u'用户不存在...'
                 return HttpResponse(json.dumps(msg), content_type="application/json")
-
+        elif codetype == '0':
+            try:
+                user = User.objects.get(phone = phone) 
+                msg['status'] = 'error'
+                msg['msg'] = u'用户已注册...'
+                return HttpResponse(json.dumps(msg), content_type="application/json")
+            except User.DoesNotExist:
+                pass
         if 'time' in request.session:
             old_int_time = request.session['time']
             request.session['time'] = int_time

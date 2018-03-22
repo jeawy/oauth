@@ -16,7 +16,8 @@ import random
 import string
 from django.utils import timezone
 from django.core.urlresolvers import reverse
- 
+from django.db import IntegrityError
+
 from .form import UploadPortrainForm, GroupForm, UserForm
 from apps.models import AuthToken, Apps
 from django.contrib import auth
@@ -122,15 +123,19 @@ def register(request):
         password = request.POST['password'].strip()
         phonecode = request.POST['phonecode'].strip()
         if VerifyCode.objects.veirfy_code_phone(phonecode, phone):
-            user = User.objects.create_user(phone, username,  password)
-     
-            user = auth.authenticate(phone=phone, password=password)
-            auth.login(request, user)
-            content={
-                'result':'ok',
-                'msg':'注册成功！'
-            }
-             
+            try:
+                user = User.objects.create_user(phone, username,  password)
+                user = auth.authenticate(phone=phone, password=password)
+                auth.login(request, user)
+                content={
+                    'result':'ok',
+                    'msg':'注册成功！'
+                }
+            except IntegrityError:
+                content={
+                    'result':'error',
+                    'msg':'该用户已注册...'
+                } 
         else:
             content={
                 'result':'error',
