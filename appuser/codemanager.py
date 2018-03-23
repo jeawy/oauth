@@ -61,7 +61,7 @@ class PhoneCodeManager(CodeManager):
         result={}  
         code    = self.generate_code()
         Subject = settings.PROJECTNAME + '手机验证' 
-        content = '您好， 欢迎您的手机验证码是:' + code + "【"+settings.PROJECTNAME+"】"
+        content = '【"+settings.PROJECTNAME+"】您好， 欢迎您的手机验证码是:' + code + "  请勿转发给他人。"
         print (code)
         
         req = requests.get(settings.SMS_API.format(phone,content)) 
