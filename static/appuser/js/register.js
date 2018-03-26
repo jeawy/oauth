@@ -135,3 +135,6 @@
            
         });
     });
+$('#phone,#phonecode').blur(function(){
+    $('#code-error').remove();
+})

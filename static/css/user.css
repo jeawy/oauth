@@ -32,13 +32,16 @@ button.btn {
 }
 
 
-label.error {
+label.error,.alert-danger {
     color: #ea5014;
     margin: 0px;
     position: absolute;
     top: 105%;
     left: 0;
     font-size: 14px;
+    padding-left: 20px;
+    background: url(/static/img/icon/jinggao.gif) no-repeat left center;
+    background-size: 14px;
 }
 
 input.error {
@@ -241,4 +244,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
    }
    .success-content span{
        color:rgb(114, 114, 114);
+   }
+   .alert-danger{
+       border: none;
+       padding: 0 0 0 20px;
    }
