@@ -26,9 +26,7 @@
 
 <body>
   {% block menu %}
-  <!--页眉-->
-   <a href="{% url 'apps:apps' %}">应用程序</a>
-   {{request.user.phone}}
+  <!--页眉--> 
   <!--菜单结束-->
   {% endblock %} {% block content %} {% endblock %} {% block footer %}
    {% endblock %}

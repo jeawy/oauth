@@ -5,7 +5,11 @@
 <div class="login-wrap">
  <header class="text-center orange">
         <img src="/static/img/noavatar.png">
+        {% if pagetype == 'findpassword'%} 
+        <h4>找回密码</h4>
+        {% else %}
         <h4>注册</h4>
+        {% endif %}
     </header>
 <form id="signup-Form" class="loginform" action="{% if pagetype == 'findpassword'%}{% url 'users:find_password' %}{% else %}{% url 'users:register' %}{% endif %}" method="post">
     {% if pagetype == 'findpassword'%} 
@@ -46,8 +50,9 @@
         <div class="alert alert-danger" role="alert">{{msg}}</div>
         {% endif %}
      {% endif %}
+     {% if pagetype != 'findpassword'%} 
     <div class="rule"><input id="agree" type="checkbox" name="agree" id="">我已经阅读并同意遵守<span>法律声明</span>和<span>隐私条框</span></div>
-    
+    {% endif %}
 </form> 
 
  <!--    <header class="text-center orange success-header">
