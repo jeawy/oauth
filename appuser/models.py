@@ -114,7 +114,6 @@ class AdaptorUser(CenterUser):
         db_table = 'user'
 
 
-
 def _user_has_perm(user, perm, obj):
     """
     A backend can raise `PermissionDenied` to short-circuit permission checking.
@@ -147,3 +146,16 @@ class VerifyCode(models.Model):
     type = models.CharField( _('type'),max_length=5,default='0')
 
     objects = AdaptorCodeManager()
+
+
+class InvalidUsername(models.Model):
+    """
+    不可用的用户名
+    """
+    username = models.CharField(max_length=256)
+    # 为什么不可用
+    # 默认是已注册
+    invalid_type = models.CharField(default = '0', max_length = 10)
+
+    class Meta:
+        db_table = 'invalidusername'

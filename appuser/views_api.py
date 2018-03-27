@@ -25,6 +25,7 @@ from django.contrib import auth
 
 from basedatas.bd_comm import Common
 from mobile.detectmobilebrowsermiddleware import DetectMobileBrowser
+from appuser.models import InvalidUsername
 
 dmb     = DetectMobileBrowser()
 comm    = Common()
@@ -393,9 +394,17 @@ new frame start
 '''
 def usernames(request, username):
     if request.method == 'GET':
-        msg= User.objects.uniqueUsername(username) 
-        status={'result':'ok',
-        'msg':msg}
+        msg = User.objects.uniqueUsername(username) 
+        if msg:
+            invalidnames = InvalidUsername.objects.filter(username = username ) 
+            if len(invalidnames) > 0:
+                msg = False
+
+        status={
+               'result':'ok',
+               'msg':msg
+        }
+        
     return HttpResponse(json.dumps(status), content_type="application/json")
 
 def email(request, email):
@@ -428,7 +437,15 @@ def phonecode(request, phone):
                 msg['status'] = 'error'
                 msg['msg'] = u'用户不存在...'
                 return HttpResponse(json.dumps(msg), content_type="application/json")
-
+        else:
+            try:
+                user = User.objects.get(phone = phone) 
+                msg['status'] = 'error'
+                msg['msg'] = u'用户已存在...'
+                return HttpResponse(json.dumps(msg), content_type="application/json")
+            except User.DoesNotExist:
+                pass
+                 
         if 'time' in request.session:
             old_int_time = request.session['time']
             request.session['time'] = int_time
@@ -480,6 +497,7 @@ def authorize(request):
                     'phone': user.phone
                 }
                 result['result'] = user_json 
+                #authtoken.delete()
             except AuthToken.DoesNotExist:
                 result['status'] = 'error'
                 result['msg'] = _('404 Not found')  

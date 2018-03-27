@@ -20,6 +20,7 @@ from django.core.urlresolvers import reverse
 from .form import UploadPortrainForm, GroupForm, UserForm
 from apps.models import AuthToken, Apps
 from django.contrib import auth
+from appuser.models import InvalidUsername
 
 #from socialoauth import SocialSites,SocialAPIError  
 
@@ -68,7 +69,6 @@ def login(request):
                     # 来自第三方的登录请求
                     redirect_url = request.GET['redirect_url']
                     token = AuthToken.objects.create_token(app, user)
-                    print(token)
                     return redirect(redirect_url+"?token=" + str(token))
 
 
@@ -115,33 +115,91 @@ def logout(request):
 @csrf_exempt
 def register(request):
     content = {}
+ 
+    if request.method == "POST":
+        username = request.POST['username'].strip()
+        msg = User.objects.uniqueUsername(username) 
+        if msg:
+            invalidnames = InvalidUsername.objects.filter(username = username ) 
+            if len(invalidnames) > 0:
+                msg = False
+        if msg == False:
+            content={
+                'result':'error',
+                'msg': username+' 已被注册'
+            }
+        else:       
+            phone = request.POST['phone'].strip()
+            password = request.POST['password'].strip()
+            phonecode = request.POST['phonecode'].strip()
+            if VerifyCode.objects.veirfy_code_phone(phonecode, phone):
+                user = User.objects.create_user(phone, username,  password)
+        
+                user = auth.authenticate(phone=phone, password=password)
+                auth.login(request, user)
+                apps = Apps.objects.all()
+                for app in apps:
+                    app.secret = AuthToken.objects.create_token(app, user)
+
+                content={
+                    'result':'ok',
+                    'apps' : apps,
+                }
+                return redirect("/", **content)
+            else:
+                content={
+                    'result':'error',
+                    'username':username,
+                    'phone':phone, 
+                    'msg':'验证码错误...'
+                }
+
+     
+    return render(request, 'user/regsiter.html', content)
+
+
+def register_success(request):
+    content = {}
 
     if request.method == "POST":
         username = request.POST['username'].strip()
-        phone = request.POST['phone'].strip()
-        password = request.POST['password'].strip()
-        phonecode = request.POST['phonecode'].strip()
-        if VerifyCode.objects.veirfy_code_phone(phonecode, phone):
-            user = User.objects.create_user(phone, username,  password)
-     
-            user = auth.authenticate(phone=phone, password=password)
-            auth.login(request, user)
-            content={
-                'result':'ok',
-                'msg':'注册成功！'
-            }
-             
-        else:
+        msg = User.objects.uniqueUsername(username) 
+        if msg:
+            invalidnames = InvalidUsername.objects.filter(username = username ) 
+            if len(invalidnames) > 0:
+                msg = False
+        if msg == False:
             content={
                 'result':'error',
-                'username':username,
-                'phone':phone, 
-                'msg':'验证码错误...'
+                'msg': username+' 已被注册'
             }
+        else:       
+            phone = request.POST['phone'].strip()
+            password = request.POST['password'].strip()
+            phonecode = request.POST['phonecode'].strip()
+            if VerifyCode.objects.veirfy_code_phone(phonecode, phone):
+                user = User.objects.create_user(phone, username,  password)
+        
+                user = auth.authenticate(phone=phone, password=password)
+                auth.login(request, user)
+                apps = Apps.objects.all()
+                for app in Apps:
+                    app.secret = AuthToken.objects.create_token(app, user)
 
-        return render(request, 'user/regsiter.html', content)
-    else: 
-        return render(request, 'user/regsiter.html', content)
+                content={
+                    'result':'ok',
+                    'apps' : apps,
+                }
+                return redirect(redirect_url+"?token=" , **content)
+            else:
+                content={
+                    'result':'error',
+                    'username':username,
+                    'phone':phone, 
+                    'msg':'验证码错误...'
+                }
+ 
+    return render(request, 'user/regsiter.html', content)
 
 @csrf_exempt
 def find_password(request):
