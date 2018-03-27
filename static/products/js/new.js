@@ -51,7 +51,7 @@ $('.product-btn').click(function() {
     }
     
     
-    var html = '<div class="alert alert-danger" role="alert">####</div>';
+    var html = '<div class="alert alert-danger xxx" role="alert">####</div>';
     $.ajax({
         type: 'post',
         url: '/product/products/',

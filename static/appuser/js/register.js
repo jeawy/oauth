@@ -70,6 +70,7 @@
                 $().errormessage('请完善资料');
                 e.preventDefault();
             } */
+    //在这是样式
         var html ='<div class="alert alert-danger" role="alert">###</div>';
         //验证用户名和邮箱是否已被注册
         $("#username").blur(function(){
@@ -94,6 +95,7 @@
             $('.msg').empty();
             $.get('/users/emailscode/'+email+'/'+code, {}, function(result){
                 if (result != true){
+                    //去页面中找这个class，就是消息被添加的位置.msg
                     $('.msg').append(html.replace('###', '邮箱验证码不正确...'));
                     $("#emailscode").val('');
                 }
@@ -137,4 +139,7 @@
     });
 $('#phone,#phonecode').blur(function(){
     $('#code-error').remove();
+})
+$('#phonecode').focus(function(){
+    $(this).siblings('.alert-danger').remove();
 })

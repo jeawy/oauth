@@ -27,7 +27,15 @@
             <input type="text" placeholder="手机验证码" name="phonecode" id="phonecode" />
             <img class="key" src="/static/img/icon/yaoshi.svg" alt="">
             <button type="button" class="proving" id="sendcode">获取验证码</button>
+            {% if result %} 
+    <!--这边是弹出注册验证码的位置-->
+        {% if result == 'error' %} 
+        <!--这边是弹出注册失败时的提示：例如验证码错误-->
+        <div class="alert alert-danger" role="alert">{{msg}}</div>
+        {% endif %}
+     {% endif %}
     </div>
+    
     <div class="msg"></div>
     <div class="relative">
             <input type="password" placeholder="密码" name="password" id="password" />
@@ -43,26 +51,20 @@
     {% else %}
     <button type="submit" class="btn btn-block orange-bg">注<span class="con-none"></span>册</button> 
     {% endif %}
+
     {% if result %} 
+    <!--这边是弹出注册验证码的位置-->
         {% if result == 'ok' %}
-        <div class="alert alert-success" role="alert">{{msg}}</div>
-        {% else %}
-        <div class="alert alert-danger" role="alert">{{msg}}</div>
+        <!--这边是弹出注册成功时的提示-->
+        <div class="alert alert-success" role="alert">{{msg}}</div> 
         {% endif %}
      {% endif %}
+
      {% if pagetype != 'findpassword'%} 
     <div class="rule"><input id="agree" type="checkbox" name="agree" id="">我已经阅读并同意遵守<span>法律声明</span>和<span>隐私条框</span></div>
     {% endif %}
 </form> 
 
- <!--    <header class="text-center orange success-header">
-        <img src="/static/img/noavatar.png">
-        <h4>注册成功</h4>
-    </header>
-<div class="success-content">
-    <p>感谢您的注册</p>
-    <a href="{% url 'apps:apps' %}"><span>3秒后为您跳转到首页</span></a>
-</div> -->
 </div>
 
 
@@ -123,7 +125,8 @@ $("#sendcode").click(function(){
     $.get('/users/phonecode/'+phone+'?codetype='+codetype, {}, function(data){
                     //
                     if(data['status'] == 'ok'){
-                        //
+                        //这是那个弹出框，这是data['msg']提示信息
+                        //data['msg'] = "已发送";
                         $().message(data['msg']);
                     }else{
                         $().errormessage(data['msg']);
@@ -140,12 +143,7 @@ $("#sendcode").click(function(){
     /* 显示弹出 */
     $('.rule span').click(function(){
         $('.Pop-up').show();
-    })
-    //三秒跳转
-    /* $(document).ready(function(){
-    var toHome = setInterval(function(){
-        window.location.href="{% url 'apps:apps' %}"
-    }, 3000);  */
+    })W
 
 </script>
 {% endblock %}

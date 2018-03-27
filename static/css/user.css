@@ -31,22 +31,11 @@ button.btn {
     padding: 0px;
 }
 
-
-label.error,.alert-danger {
-    color: #ea5014;
-    margin: 0px;
-    position: absolute;
-    top: 105%;
-    left: 0;
+p.msg{
     font-size: 14px;
-    padding-left: 20px;
-    background: url(/static/img/icon/jinggao.gif) no-repeat left center;
-    background-size: 14px;
+    margin-top: 15px;
 }
 
-input.error {
-    border-color: #d9534f;
-}
 .login-wrap{
     width: 340px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
@@ -236,14 +225,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
  border-bottom: 1px solid #ddd;
 }
 .success-content{
-    padding: 30px 0 15px;
     text-align: center;
+    width: 100%;
+   }
+   .success-content img{
+       width: 60px;
+       padding: 30px 0 10px;
+   }
+   .success-content span{
+    color:rgb(114, 114, 114);
    }
    .login-wrap .success-header h4{
     margin: 15px 0 30px;
-   }
-   .success-content span{
-       color:rgb(114, 114, 114);
    }
    .alert-danger{
        border: none;

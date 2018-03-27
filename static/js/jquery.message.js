@@ -33,7 +33,7 @@
 		timeout1 = setTimeout(function() {
 			visible = false;
 		}, $.message.defaults.minDuration + $.message.defaults.displayDurationPerCharacter * Math.sqrt(message.length));
-		timeout2 = setTimeout(fadeOutHelper, $.message.defaults.totalTimeout);
+		timeout2 = sWetTimeout(fadeOutHelper, $.message.defaults.totalTimeout);
 	};
 	
     
@@ -84,7 +84,7 @@
 		displayDurationPerCharacter: 125,
 		minDuration: 2500,
 		totalTimeout: 6000,
-		template: '<div class="jquery-message"> <p></p> </div></div>',
-        error_template: '<div class="jquery-error-message"> <p></p> </div></div>'//'<div class="jquery-error-message"><div class="round"></div><p></p><div class="round"></div></div>'
+		template: '<div class="alert-danger"> <p></p> </div></div>',
+        error_template: '<div class="alert-danger"> <p></p> </div></div>'//'<div class="jquery-error-message"><div class="round"></div><p></p><div class="round"></div></div>'
 	}
 })(jQuery);

@@ -63,3 +63,29 @@
 .jquery-message a, .jquery-error-message a {
     display: none;
 }
+.alert-danger p{
+    margin: 0;
+}
+label.error{
+    color: #ea5014;
+    margin: 0px;
+    position: absolute;
+    top: 105%;
+    left: 0;
+    font-size: 14px;
+    padding-left: 20px;
+    background: url(/static/img/icon/jinggao.gif) no-repeat left center;
+    background-size: 14px;
+}
+.alert-danger{
+    position: absolute;
+    color: #ea5014;
+    margin: 0px;
+    font-size: 14px;
+    padding-left: 20px;
+    background: url(/static/img/icon/jinggao.gif) no-repeat left center;
+    background-size: 14px;
+}
+input.error {
+    border-color: #ea5014;
+}
