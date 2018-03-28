@@ -140,6 +140,10 @@
 $('#phone,#phonecode').blur(function(){
     $('#code-error').remove();
 })
+/* 电话框值改变，验证码按钮下方的警告消失 */
+$('#phone').change(function(){
+    $('#sendcode').next('.error').remove();;
+})
 $('#phonecode').focus(function(){
     $(this).siblings('.alert-danger').remove();
 })

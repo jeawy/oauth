@@ -96,6 +96,7 @@ $("#sendcode").click(function(){
  var thisBtn = $(this);
     var phone = $('#phone').val(),
     thisEl = $(this);
+    thisEl.next('.error').remove();
     {% if pagetype == 'findpassword'%} 
     var codetype = '1';
     {% else %}
@@ -104,7 +105,7 @@ $("#sendcode").click(function(){
 
     result = validatemobile(phone);
     if (result['status'] == false){
-        var txt2=$("<lable class='error'></lable>").text(result['msg']);
+        var txt2=$("<label class='error'></label>").text(result['msg']);
         thisBtn.parents('.relative').append(txt2);
         $('#phone').focus(); 
     }else{
