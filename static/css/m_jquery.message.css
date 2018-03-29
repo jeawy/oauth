@@ -69,7 +69,7 @@
 }
 label.error{
     color: #ea5014;
-    margin: 0px;
+    margin: 3px 0 0 0;
     position: absolute;
     top: 105%;
     left: 0;
@@ -81,7 +81,7 @@ label.error{
 .alert-danger,.alert{
     position: absolute;
     color: #ea5014;
-    margin: 0px;
+    margin: 3px 0 0 0;
     font-size: 14px;
     padding-left: 20px;
     background: url(/static/img/icon/jinggao.gif) no-repeat left 3px;
