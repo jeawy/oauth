@@ -56,7 +56,7 @@
     <!--这边是弹出注册验证码的位置-->
         {% if result == 'ok' %}
         <!--这边是弹出注册成功时的提示-->
-        <div class="alert alert-success" role="alert">{{msg}}</div> 
+        <div class="alert alert-success" role="alert">{{msg}}，3秒后跳转至登录页...</div> 
         {% endif %}
      {% endif %}
 
@@ -146,5 +146,15 @@ $("#sendcode").click(function(){
         $('.Pop-up').show();
     })
 
+    {% if result %}  
+        {% if result == 'ok' %} 
+        //写3秒后返回首页的业务逻辑
+        var toHome= setTimeout(function(){
+            window.location.href = '/users/login/?next=/';
+        },3000);
+        {% endif %}
+     {% endif %}
+
+      
 </script>
 {% endblock %}
