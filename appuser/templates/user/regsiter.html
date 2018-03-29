@@ -105,7 +105,7 @@ $("#sendcode").click(function(){
 
     result = validatemobile(phone);
     if (result['status'] == false){
-        var txt2=$("<label class='error'></label>").text(result['msg']);
+        var txt2=$("<label class='error test'></label>").text(result['msg']);
         thisBtn.parents('.relative').append(txt2);
         $('#phone').focus(); 
     }else{
@@ -128,9 +128,9 @@ $("#sendcode").click(function(){
                     if(data['status'] == 'ok'){
                         //这是那个弹出框，这是data['msg']提示信息
                         //data['msg'] = "已发送";
-                        $().message(data['msg']);
+                        promptMessage(thisEl,data['msg']);
                     }else{
-                        $().errormessage(data['msg']);
+                        promptMessage(thisEl,data['msg']);
                     }
     });
      

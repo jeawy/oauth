@@ -46,7 +46,6 @@
 		
 		errorinitHelper();
 		helper.find("p").html(message);
-		//动画、透明度改变
 		helper.show().animate({ opacity: $.message.defaults.opacity}, $.message.defaults.fadeInDuration);
 		visible = true;
 		active = false;

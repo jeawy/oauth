@@ -60,3 +60,14 @@ function reload3(){
         window.location.reload();
     }, 3000);
 }
+
+
+/*  提示信息函数 */
+
+function  promptMessage(el,msg){//el=在哪个元素后添加提示，msg=提示得内容
+    el.next('.alert').remove();
+    el.next('label.error').remove();//删除之前的提示
+    var html =  '<div class="alert">'+msg+'</div>'//提示信息构成
+    el.after(html);//添加提示
+    var deleteMsg=  setTimeout(function(){ el.next('.alert').remove(); }, 5000);//5秒去掉提示
+}
