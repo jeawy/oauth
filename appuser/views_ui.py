@@ -48,7 +48,7 @@ def login(request):
                         'msg':msg 
                     }
                     if isMble: 
-                        return render(request, 'user/m_login.html', context)
+                        return render(request, 'user/login.html', context)
                     else:
                         return render(request, 'user/login.html', context)
  
@@ -96,7 +96,7 @@ def login(request):
                            'msg':msg,
                            'phone':phone}
             if isMble: 
-                return render(request, 'user/m_login.html', context)
+                return render(request, 'user/login.html', context)
             else:
                 return render(request, 'user/login.html', context)
             
@@ -105,7 +105,7 @@ def login(request):
         context = {'next':next_url}
 
         if isMble: 
-            return render(request, 'user/m_login.html', context)
+            return render(request, 'user/login.html', context)
         else:  
             return render(request, 'user/login.html', context)
 def logout(request):
