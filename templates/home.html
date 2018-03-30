@@ -9,7 +9,7 @@
 <div class="login-wrap">
     <header class="text-center orange success-header">
         <img src="/static/img/noavatar.png">
-        <h4>注册成功
+        <h4>欢迎， {{request.user.username}}
             <p class="msg">您的账号可以访问以下服务</p>
         </h4>
         
@@ -19,7 +19,7 @@
                 {% for token in tokens %}
                 {% if token.app.appname == '论坛' %}
             <td> 
-                    <a href="http://www.asucast.com:8080/oauth2.php?token={{token.token}}">
+                    <a href="http://bbs.asucast.com/oauth2.php?token={{token.token}}">
                 <img src="/static/img/luntan.png">
                     </a>
             </td>
@@ -31,7 +31,7 @@
         <tr>
             {% for token in tokens %}
             {% if token.app.appname == '论坛' %}
-            <td><a href="http://www.asucast.com:8080/oauth2.php?token={{token.token}}"><span>论坛</span></a></td>
+            <td><a href="http://bbs.asucast.com/oauth2.php?token={{token.token}}"><span>论坛</span></a></td>
             {% endif %}
             {% endfor %} 
             <td><a href="#"><span>官网</span></a></td> 
