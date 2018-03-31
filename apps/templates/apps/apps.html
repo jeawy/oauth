@@ -16,7 +16,10 @@
 <table class="table">
 <tr><th>应用</th><th>uuid</th><th>密钥</th></tr>
 {% for app in apps %}
-<tr><td>{{app.appname}}</td><td>{{app.uuid}}</td><td>{{app.secret}}</td><td><input type="button" class="fn_btn_delete btn_danger" appid="{{app.id}}" value="删除"/></td></tr>
+<tr><td>{{app.appname}}</td>
+    <td>{{app.uuid}}</td>
+    <td>{{app.secret}}</td>
+    <input type="hidden" class="fn_btn_delete btn_danger" appid="{{app.id}}" value="删除"/></td>
 {% endfor %}
 </table>
 {% endblock %} 
