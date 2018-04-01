@@ -26,7 +26,15 @@
             {% endif %}
             {% endfor %} 
             <td> <img src="/static/img/guanwang.png"></td>
-            <td> <img src="/static/img/shangcheng.png"></td>
+            {% for token in tokens %}
+            {% if token.app.appname == '商城' %}
+            <td> 
+                    <a href="http://47.95.239.228:8000/users/login?token={{token.token}}">
+                <img src="/static/img/shangcheng.png">
+                </a>    
+            </td>
+            {% endif %}
+            {% endfor %} 
         </tr>
         <tr>
             {% for token in tokens %}
@@ -34,8 +42,16 @@
             <td><a href="http://bbs.asucast.com/oauth2.php?token={{token.token}}"><span>论坛</span></a></td>
             {% endif %}
             {% endfor %} 
+
+            
             <td><a href="#"><span>官网</span></a></td> 
-            <td><a href="#"><span>商城</span></a></td> 
+          
+
+            {% for token in tokens %}
+            {% if token.app.appname == '商城' %}
+            <td><a href="http://47.95.239.228:8000/users/login?token={{token.token}}"><span>商城</span></a></td> 
+            {% endif %}
+            {% endfor %}
         </tr>
     </table>
 </div>
