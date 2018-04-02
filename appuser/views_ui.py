@@ -38,7 +38,6 @@ def login(request):
             if 'appid' in request.GET and 'redirect_url' in request.GET:
                 # 来自第三方的登录请求
                 appid = request.GET['appid']
-                print(appid)
                 try:
                     app = Apps.objects.get(uuid = appid)
                 except Apps.DoesNotExist:
