@@ -71,3 +71,7 @@ function  promptMessage(el,msg){//el=在哪个元素后添加提示，msg=提示
     el.after(html);//添加提示
     var deleteMsg=  setTimeout(function(){ el.next('.alert').remove(); }, 5000);//5秒去掉提示
 }
+$(function(){
+    var windowHeight= $(window).height();//浏览器可视窗口的高度
+    $('body').css('min-height',windowHeight+'px');
+})

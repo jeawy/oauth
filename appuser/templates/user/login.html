@@ -9,7 +9,7 @@
     <form id="signup-Form" class="loginform" action="" method="post">
         <div class="relative">
         <input type="text" name="phone" placeholder="手机号码" id="phone" value="{{email}}" />
-        <img src="/static/img/icon/account.svg" alt="">
+        <img src="/static/img/icon/shouji.svg" alt="">
         </div>
         <div class="relative">
             <input type="password" id="password" name="password" placeholder="密码" /> 
@@ -38,12 +38,12 @@
             </a>
         </div>
     </div>
-    <div class="otherwise">
+   <!--  <div class="otherwise">
         其他方式登录&nbsp;
         <a href="javascript:;"><i class="fa fa-weixin" aria-hidden="true"></i></a>&nbsp;
         <a href="javascript:;"><i class="fa fa-qq" aria-hidden="true"></i></a>&nbsp;
         <a href="javascript:;"><i class="fa fa-weibo" aria-hidden="true"></i></a>&nbsp;
-    </div>
+    </div> -->
 </div>
 
 <input type="hidden" name="next" value="{{next_url}}" /> {% endblock %}{% block jslogin %}
