@@ -2,6 +2,30 @@ body{
     background-color: rgb(239, 239, 239);
     position: relative;
 }
+.common-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    min-width: 100px;
+    background-color: #ea5014;
+}
+.white{
+    color:#fff;
+}
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     background-color: #fff!important;
 }
@@ -33,6 +57,7 @@ button.btn {
 p.msg{
     font-size: 14px;
     margin-top: 15px;
+    color: #333;
 }
 
 .login-wrap{
@@ -41,11 +66,10 @@ p.msg{
     padding: 30px 30px 30px;
     border-radius: 6px;
     background-color: #fff;
-    margin-top: 20px;
     position: absolute;
     top:50%;
     left: 50%;
-    transform: translate(-50%,-60%);
+    transform: translate(-50%,-51%);
     color: rgb(114, 114, 114);
 }
 .login-wrap header img{
@@ -185,10 +209,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     cursor: pointer;
     padding:0 4px;
 }
-
+.modal-header{
+    font-size: 16px!important;
+    background-color: rgb(242, 242, 242);
+    border-bottom:none!important;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
 
 /* 弹出框 */
-.Pop-up{
+/* .Pop-up{
     display: none;
     width: 600px;
     position: fixed;
@@ -219,7 +249,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     position: absolute;
     top: 15px;
     right: 15px;
-}
+} */
 /* 注册成功 */
 .success-header{
  border-bottom: 1px solid #ddd;
