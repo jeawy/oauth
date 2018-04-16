@@ -68,9 +68,12 @@ def login(request):
                     # 来自第三方的登录请求
                     redirect_url = request.GET['redirect_url']
                     token = AuthToken.objects.create_token(app, user)
-                    return redirect(redirect_url+"?token=" + str(token))
-
-
+     
+                    if 'next' in redirect_url: 
+                        return redirect(redirect_url+"&token=" + str(token))
+                    else:
+                        return redirect(redirect_url+"?token=" + str(token))
+ 
                 if 'next' in request.GET: 
                     next_url = request.GET.get('next')
                 else:
