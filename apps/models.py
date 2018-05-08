@@ -27,7 +27,7 @@ class AuthToken(models.Model):
     """
     user = models.ForeignKey(User)
     app = models.ForeignKey(Apps)
-    token = models.CharField(max_length = 128, unique = True)
+    token = models.CharField(max_length = 128)
     objects = AuthTokenManager()
 
     class Meta:

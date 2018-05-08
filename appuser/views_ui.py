@@ -16,7 +16,7 @@ import random
 import string
 from django.utils import timezone
 from django.core.urlresolvers import reverse
- 
+import uuid
 from .form import UploadPortrainForm, GroupForm, UserForm
 from apps.models import AuthToken, Apps
 from django.contrib import auth
@@ -61,13 +61,16 @@ def login(request):
                 # by logging the user in.
                 request.user = user
                 auth.login(request, user)
-                 
+                token = uuid.uuid4() 
+                apps = Apps.objects.all()
+                for app_item in apps:
+                    AuthToken.objects.create_token(app_item, user, token)
                 # redirect to the value of next if it is entered, otherwise
                 # to settings.APP_WEB_PC_LOGIN_URL
                 if 'appid' in request.GET and 'redirect_url' in request.GET:
                     # 来自第三方的登录请求
                     redirect_url = request.GET['redirect_url']
-                    token = AuthToken.objects.create_token(app, user)
+                    
      
                     if 'next' in redirect_url: 
                         return redirect(redirect_url+"&token=" + str(token))
