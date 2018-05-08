@@ -72,6 +72,12 @@ p.msg{
     transform: translate(-50%,-50%);
     color: rgb(114, 114, 114);
 }
+.back span{
+    color: rgb(114, 114, 114);
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12px;
+}
 .login-wrap header img{
     border-radius: 50%;
     width: 80px;
@@ -143,7 +149,7 @@ footer{
     bottom: 0px;
 }
 .login-wrap h4{
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 button[type=submit]{
     text-align: center;
@@ -200,7 +206,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
      color:rgb(200, 200, 200) !important;
 }
 .rule{
-    margin-top:15px;
+    margin-top: -5px;
+    margin-bottom:15px;
     font-size: 12px;
     position: relative;
 }

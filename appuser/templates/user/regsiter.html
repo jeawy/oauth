@@ -4,6 +4,7 @@
 {% csrf_token %}
 <div class="login-wrap">
  <header class="text-center orange">
+     
         <img src="/static/img/noavatar.png">
         {% if pagetype == 'findpassword'%} 
         <h4>找回密码</h4>
@@ -45,13 +46,6 @@
             <input type="password" placeholder="再次输入密码" name="confirm_password" id="confirm_password">
     <img src="/static/img/icon/queren.svg" alt="">
     </div>
-    
-    {% if pagetype == 'findpassword'%} 
-    <button type="submit" class="btn btn-block orange-bg">重置密码</button> 
-    {% else %}
-    <button type="submit" class="btn btn-block orange-bg">注<span class="con-none"></span>册</button> 
-    {% endif %}
-
     {% if result %} 
     <!--这边是弹出注册验证码的位置-->
         {% if result == 'ok' %}
@@ -63,6 +57,17 @@
      {% if pagetype != 'findpassword'%} 
     <div class="rule"><input id="agree" type="checkbox" name="agree">我已经阅读并同意遵守<span data-toggle="modal" data-target="#law">法律声明</span>和<span data-toggle="modal" data-target="#privance">隐私条款</span></div>
     {% endif %}
+
+    
+    {% if pagetype == 'findpassword'%} 
+    <button type="submit" class="btn btn-block orange-bg">重置密码</button> 
+    {% else %}
+    <button type="submit" class="btn btn-block orange-bg">注<span class="con-none"></span>册</button> 
+    {% endif %}
+    <div class="text-right back"><a href="/users/login/?next=/"><span>
+        <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;
+        返回登录</span></a></div>
+
 </form> 
 
 </div>

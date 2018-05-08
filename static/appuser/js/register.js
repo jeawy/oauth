@@ -65,11 +65,7 @@
                 email: "请输入一个正确的邮箱",
             }
         });
-       /*  $('form').submit(function(e){
-            if(!$('#agree').checked){
-                $().errormessage('请完善资料');
-                e.preventDefault();
-            } */
+       
     //在这是样式
         var html ='<div class="alert alert-danger" role="alert">###</div>';
         //验证用户名和邮箱是否已被注册
@@ -87,7 +83,7 @@
                 }
             });
         });
-
+        
        $(document).on( 'blur',  "#emailscode",function(){
             var email = $.trim($("#email").val());
             var code = $.trim($("#emailcode").val());
