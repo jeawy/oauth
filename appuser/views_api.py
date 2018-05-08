@@ -441,7 +441,7 @@ def phonecode(request, phone):
             try:
                 user = User.objects.get(phone = phone) 
                 msg['status'] = 'error'
-                msg['msg'] = u'用户已存在...'
+                msg['msg'] = u'该手机号已注册，请重新登录或找回密码'
                 return HttpResponse(json.dumps(msg), content_type="application/json")
             except User.DoesNotExist:
                 pass

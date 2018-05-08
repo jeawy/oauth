@@ -19,8 +19,8 @@
                 {% for token in tokens %}
                 {% if token.app.appname == '论坛' %}
             <td> 
-                    <a href="http://bbs.asucast.com/oauth2.php?token={{token.token}}">
-                <img src="/static/img/luntan.png">
+                    <a href="http://bbs.a-su.com.cn/oauth2.php?token={{token.token}}">
+                    <img src="/static/img/luntan.png">
                     </a>
             </td>
             {% endif %}
@@ -49,7 +49,7 @@
         <tr>
             {% for token in tokens %}
             {% if token.app.appname == '论坛' %}
-            <td><a href="http://bbs.asucast.com/oauth2.php?token={{token.token}}"><span>论坛</span></a></td>
+            <td><a href="http://bbs.a-su.com.cn/oauth2.php?token={{token.token}}"><span>论坛</span></a></td>
             {% endif %}
             {% endfor %} 
 
@@ -72,16 +72,6 @@
     </table>
 </div>
 
-
-<!-- 弹出框 -->
-<!-- <div class="Pop-up">
-    <img class="close" src="/static/img/icon/close.svg" alt="">
-    <div class="Pop-up-title">隐私条款</div>
-    <div class="Pop-up-details">
-        <div class="details-title">1.信息的手机和使用</div>
-        <p>（1）为了以创建账户、识别账户</p>
-    </div>
-</div> -->
 {% endblock %} {% block js %}
 
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
@@ -123,7 +113,7 @@
                     clearInterval(inter);
                 }
                 else {
-                    $("#sendcode").text(sec.toString() + "后重新发送...");
+                    $("#sendcode").text(sec.toString() + "秒后重新发送...");
                 }
             }, 1000);
         }
