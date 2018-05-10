@@ -71,15 +71,15 @@
         //验证用户名和邮箱是否已被注册
         $("#username").blur(function(){
             var username = $.trim($("#username").val());
-            $('.msg').empty();
+            $('.username_error').empty();
              if(username.length == 0)
                 {
                     return;
                 }
             $.get('/users/usernames/'+username, {}, function(result){
                 if (result['msg'] != true){
-                    $('.msg').append(html.replace('###', '用户名【'+username+'】已被注册...'));
-                    $("#username").val('');
+                    $("#username").val();
+                   $('.username_error').append(html.replace('###', '用户名【'+username+'】已被注册...')); 
                 }
             });
         });
