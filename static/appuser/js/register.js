@@ -78,7 +78,7 @@
                 }
             $.get('/users/usernames/'+username, {}, function(result){
                 if (result['msg'] != true){
-                    $("#username").val();
+                    $("#username").val('');
                    $('.username_error').append(html.replace('###', '用户名【'+username+'】已被注册...')); 
                 }
             });
