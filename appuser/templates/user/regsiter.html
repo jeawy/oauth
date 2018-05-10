@@ -356,6 +356,8 @@ $("#sendcode").click(function(){
                         promptMessage(thisEl,data['msg']);
                     }else{
                         promptMessage(thisEl,data['msg']);
+                        clearInterval(inter);
+                        $("#sendcode").removeAttr("disabled");
                     }
     });
      
