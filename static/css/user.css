@@ -108,12 +108,12 @@ label{
     line-height: 200%;
 }
 
-.loginform input[type=checkbox]{
+/* .loginform input[type=checkbox]{
     vertical-align: text-bottom;
     margin:0 4px 0 0;
     display: inline;
     width: unset;
-}
+} */
 .links{
     padding: 15px 0 15px;
     border-bottom: 1px solid #ddd;

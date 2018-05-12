@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block title2%}用户登录 {% endblock%} {% block css %}
-<link href="/static/css/user.css" rel="stylesheet"> {% endblock %} {% block content %}
+<link href="/static/css/user.css" rel="stylesheet">
+<link href="/static/css/check.css" rel="stylesheet">  {% endblock %} {% block content %}
  
 {% csrf_token %}
 <div class="login-wrap">
@@ -56,7 +57,9 @@
      {% endif %}
 
      {% if pagetype != 'findpassword'%} 
-    <div class="rule"><input id="agree" type="checkbox" name="agree">我已经阅读并同意遵守<span data-toggle="modal" data-target="#law">法律声明</span>和<span data-toggle="modal" data-target="#privance">隐私条款</span></div>
+    <div class="rule"><input id="agree" class="magic-checkbox" type="checkbox" name="agree"><label for="agree"></label>
+        我已经阅读并同意遵守<span data-toggle="modal" data-target="#law">法律声明</span>和<span data-toggle="modal" data-target="#privance">隐私条款</span></div>
+        <input type="radio" class="magic-radio" id="rad">
     {% endif %}
 
     
@@ -334,32 +337,31 @@ $("#sendcode").click(function(){
         thisBtn.parents('.relative').append(txt2);
         $('#phone').focus(); 
     }else{
-        var sec=10;
-        $("#sendcode").attr({"disabled":"disabled"});
-        var inter = setInterval(function(){
-            sec --;
-            if (sec ==0){
-                $("#sendcode").removeAttr("disabled");
-                $("#sendcode").text("发送验证码");
-                clearInterval(inter);
-            }
-            else{
-                $("#sendcode").text(sec.toString() +"秒后重新发送..."); 
-            } 
-        }, 1000); 
-    }
-    $.get('/users/phonecode/'+phone+'?codetype='+codetype, {}, function(data){
-                    //
-                    if(data['status'] == 'ok'){
-                        //这是那个弹出框，这是data['msg']提示信息
-                        //data['msg'] = "已发送";
-                        promptMessage(thisEl,data['msg']);
-                    }else{
-                        promptMessage(thisEl,data['msg']);
-                        clearInterval(inter);
-                        $("#sendcode").removeAttr("disabled");
-                    }
+        $.get('/users/phonecode/' + phone + '?codetype=' + codetype, {}, function (data) {
+        //
+        if (data['status'] == 'ok') {
+            promptMessage(thisEl, data['msg']);
+            var sec = 10;
+            $("#sendcode").attr({ "disabled": "disabled" });
+            var inter = setInterval(function () {
+                sec--;
+                if (sec == 0) {
+                    $("#sendcode").removeAttr("disabled");
+                    $("#sendcode").text("发送验证码");
+                    clearInterval(inter);
+                }
+                else {
+                    $("#sendcode").text(sec.toString() + "秒后重新发送...");
+                }
+            }, 1000);
+        } else {
+            clearInterval(inter);
+            promptMessage(thisEl, data['msg']);
+            $("#sendcode").removeAttr("disabled");
+        }
     });
+    }
+   
      
     doubleclick = false;
     

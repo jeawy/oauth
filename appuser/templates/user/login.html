@@ -1,5 +1,7 @@
 {% extends 'base.html' %} {% block title2%}用户登录 {% endblock%} {% block css %}
-<link href="/static/css/user.css" rel="stylesheet"> {% endblock %} 
+<link href="/static/css/user.css" rel="stylesheet">
+<link href="/static/css/check.css" rel="stylesheet">
+{% endblock %} 
 {% block content %}
 <div class="login-wrap">
     <header class="text-center orange">
@@ -24,8 +26,8 @@
     </form>
     <div class="links clearfix">
         <div class="pull-left">
-            <input id="auto-login" type="checkbox">
-            <label for="auto-login">自动登录</label>
+            <input id="auto-login" type="checkbox" class='magic-checkbox'>
+            <label for="auto-login"></label>自动登录
         </div>
         <div class="pull-right">
     
