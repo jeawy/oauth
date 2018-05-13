@@ -142,9 +142,10 @@ def register(request):
         
                 user = auth.authenticate(phone=phone, password=password)
                 auth.login(request, user)
+                token = uuid.uuid4()
                 apps = Apps.objects.all()
                 for app in apps:
-                    app.secret = AuthToken.objects.create_token(app, user)
+                    app.secret = AuthToken.objects.create_token(app, user, token)
 
                 content={
                     'result':'ok',
@@ -187,9 +188,10 @@ def register_success(request):
         
                 user = auth.authenticate(phone=phone, password=password)
                 auth.login(request, user)
+                token = uuid.uuid4()
                 apps = Apps.objects.all()
-                for app in Apps:
-                    app.secret = AuthToken.objects.create_token(app, user)
+                for app in apps:
+                    app.secret = AuthToken.objects.create_token(app, user, token)
 
                 content={
                     'result':'ok',
