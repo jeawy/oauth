@@ -47,19 +47,21 @@
     <div class="relative">
             <input type="password" placeholder="再次输入密码" name="confirm_password" id="confirm_password">
     <img src="/static/img/icon/queren.svg" alt="">
-    </div>
     {% if result %} 
     <!--这边是弹出注册验证码的位置-->
         {% if result == 'ok' %}
         <!--这边是弹出注册成功时的提示-->
-        <div class="alert alert-success" role="alert">{{msg}}3秒后跳转至登录页...</div> 
+        <div class="alert" role="alert">{{msg}}3秒后跳转至登录页...</div> 
         {% endif %}
      {% endif %}
+    </div>
+    
 
      {% if pagetype != 'findpassword'%} 
-    <div class="rule"><input id="agree" class="magic-checkbox" type="checkbox" name="agree"><label for="agree"></label>
-        我已经阅读并同意遵守<span data-toggle="modal" data-target="#law">法律声明</span>和<span data-toggle="modal" data-target="#privance">隐私条款</span></div>
-        <input type="radio" class="magic-radio" id="rad">
+    <div class="rule">
+        <input id="agree" type="checkbox" name="agree">
+        我已经阅读并同意遵守<span data-toggle="modal" data-target="#law">法律声明</span>和<span data-toggle="modal" data-target="#privance">隐私条款</span>
+    </div>
     {% endif %}
 
     

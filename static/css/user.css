@@ -98,7 +98,7 @@ label{
     font-weight: 300;
     cursor: pointer;
 }
-.loginform input{
+.loginform input[type='text'],input[type='password']{
     position: relative;
     width: 100%;
     padding: 0 10px 0 36px;
@@ -210,6 +210,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin-bottom:24px;
     font-size: 12px;
     position: relative;
+}
+input[type='checkbox']{
+    width: auto;
+    vertical-align: sub;
 }
 .rule span{
     color: #ea5014;
